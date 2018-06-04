@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+.formboarder{
+    max-width: 300px;
+    padding: 10px 20px;
+    background: #f4f4f4;
+    margin: 10px auto;
+    padding: 20px;
+    padding-top: 21px;
+    padding-bottom: 7px;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    border-radius: 8px;
+
+    font-family: Georgia, "Times New Roman", Times, serif;
+
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.login-fail{
+text-align: center;
+color:red;
+}
+.container {
+    }
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<h2 align="center">Daddy Analytics Login Form</h2>
+
+<form action="/webapp/login/" method="post">{% csrf_token%}
+<div class="formboarder">
+  <div class="imgcontainer">
+{% load static %}
+<img src="{% static "imagefiles/avatar.png" %}" alt="My image">
+  </div>
+{% for message in messages %}
+
+                    <div class="login-fail">
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+	  <p><a href="/webapp/signup/">Create new account</a></p>
+    </label>
+  </div>
+  </div>
+</form>
+
+</body>
+</html>
